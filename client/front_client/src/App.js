@@ -22,20 +22,8 @@ function App() {
     return (
         <div className="content">
             <Home/>
-            {(typeof data.content === 'undefined') ? (
-                <p>Loading.iiii..</p>
-            ) : (
-                <div>
-                <p>{data.id}</p>
-                <p>{data.content}</p>
-                <p>{data.name}</p>
-                </div>
 
-            )}
-            <div>
-                <h1>Text Field Example</h1>
-                <Textfield />
-            </div>
+
 
         </div>
     );

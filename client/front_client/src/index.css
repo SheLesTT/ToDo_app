@@ -4,7 +4,11 @@
 * {
   margin: 0;
   font-family: "Quicksand";
-  color: #333;
+  color: #E4E4E4;
+}
+body{
+
+  background-color: #0B0B0B;
 }
 .content {
   max-width: 600px;
@@ -13,15 +17,103 @@
 }
 .task_container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  /*align-items: center;*/
-  /*height: 100vh; !* Adjust this value as needed *!*/
+  align-items: center;
+  overflow: auto;
+  padding: 20px;
+  height: 50vh; /* Adjust this value as needed */
 }
 
 .task{
+  display: flex;
+  justify-content: flex-start;
+  /*flex-direction: row;*/
+  padding: 3px;
+  background-color: #252525;
+  border-radius: 10px;
+  min-height: 60px;
   width: 300px;
-  border: 1px solid #03fcca;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s;
-  margin: 20px;
+  margin: 10px;
 }
+input[type="checkbox"]{
+  appearance: none;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  border: 1px solid #777777;
+
+  /*width: 50px;*/
+}
+input[type="checkbox"]:checked{
+    background-color: #777777;
+    font-weight: 100;
+    content: "do";
+    color: white;
+}
+.checkbox_container{
+  display: flex;
+  width: 30px;
+  justify-content: center;
+    align-items: center;
+  /*margin-right: auto;*/
+
+}
+
+.task_title{
+  display: flex;
+  padding-left: 5px;
+  align-items: center;
+  /*width: 100%;*/
+  font-size: 20px;
+  /*margin-bottom: 10px;*/
+
+}
+
+.new_task_field {
+  width: 100%;
+  height: 30px;
+  font-size: 20px;
+  border-radius: 10px;
+  border: 1px solid #777777;
+
+  background-color: #0B0B0B;
+}
+
+
+/*.round-checkbox input {*/
+/*  opacity: 0;*/
+/*  width: 0;*/
+/*  height: 0;*/
+/*}*/
+/*.checkbox_custom{*/
+/*display: inline-block;*/
+/*  height: 20px; !* Adjust the size as needed *!*/
+/*  width: 20px; !* Adjust the size as needed *!*/
+/*  border-radius: 50%;*/
+/*  border: 1px solid #ccc;*/
+/*  background-color: white;*/
+/*}*/
+/*.round-checkbox {*/
+/*  display: inline-block;*/
+/*  position: relative;*/
+/*  cursor: pointer;*/
+/*}*/
+
+
+/*.round-checkbox input:checked + .checkbox-custom {*/
+/*  background-color: #007bff; !* Change the color when checkbox is checked *!*/
+/*  border: none;*/
+/*}*/
+
+/*.round-checkbox input:checked + .checkbox-custom::after {*/
+/*  content: '\2713'; !* Unicode checkmark character *!*/
+/*  position: absolute;*/
+/*  top: 50%;*/
+/*  left: 50%;*/
+/*  transform: translate(-50%, -50%);*/
+/*  color: white;*/
+/*  font-size: 14px;*/
+/*}*/
