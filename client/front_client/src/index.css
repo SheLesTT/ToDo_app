@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+/* base styles */
+* {
+  margin: 0;
+  font-family: "Quicksand";
+  color: #333;
+}
+.content {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+}
+.task_container {
+  display: flex;
+  justify-content: center;
+  /*align-items: center;*/
+  /*height: 100vh; !* Adjust this value as needed *!*/
+}
+
+.task{
+  width: 300px;
+  border: 1px solid #03fcca;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+  margin: 20px;
+}
