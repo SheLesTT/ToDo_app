@@ -20,7 +20,7 @@ const Home = () => {
             {isPending && <div>Loading.iiii..</div>}
             {tasks && <TasksList tasks={tasks} />}
 
-            <div><Create/></div>
+            {/*<div><Create/></div>*/}
         </div>
 
     );

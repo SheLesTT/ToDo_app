@@ -2,7 +2,7 @@ import {useState} from "react";
 import {useEffect} from "react";
 import {useRef} from "react";
 
-const Create = () => {
+const Create = ({onAddTask}) => {
 
     const[name, setTitle] = useState("");
     const[content, setContent] = useState("");
@@ -12,6 +12,8 @@ const Create = () => {
       document.removeEventListener("keydown", detectKeyDown, true);
     };
     },)
+
+
     const detectKeyDown = (e)=>{
         if(e.key==="Enter"){
             e.preventDefault()
@@ -23,6 +25,7 @@ const Create = () => {
         // e.preventDefault();
         const task = {name, content}
         console.log(JSON.stringify(task))
+        onAddTask(task)
         fetch("http://localhost:8000/tasks", {
             method: "POST",
             headers: {

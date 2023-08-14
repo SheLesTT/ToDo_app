@@ -1,30 +1,35 @@
-import React, { useRef } from "react";
-import UpdateList from "./UpdateList";
+import React, {useRef, useState} from "react";
+import Create from "./Create";
+import Task from "./Task";
 const TasksList = ({tasks, }) => {
 
+    const[to_do, setToDo] = useState(tasks);
+
+    const addTask = (task) =>{
+        setToDo([...to_do, task]);
+        console.log(to_do)
+    }
 
 
 
     return  (
+        <div>
+
         <div  className="task_container">
-        {tasks.map((task) => (
+        {to_do.map((task) => (
 
-            <div className="task" key={task.id}>
-
-                <div className="checkbox_container">
-                    <label className="round-checkbox">
-                         <input type ="checkbox"/>
-                         <span className="checkbox_custom"></span>
-                    </label>
-                </div>
-
-                <p className="task_title"> {task.name}</p>
-
-            </div>
+            <Task key={task.id} id={task.id} name={task.name}/>
 
         ))}
+
+
     </div>
+        <div>
+            <Create onAddTask={addTask}/>
+        </div>
+        </div>
     )
+
 }
 
 export default TasksList
