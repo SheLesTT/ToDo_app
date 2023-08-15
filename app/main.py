@@ -1,6 +1,9 @@
 from fastapi import FastAPI
-from app.routers import tasks
+from app.routers import tasks, Users, auth
 from starlette.middleware.cors import CORSMiddleware
+from passlib.context import CryptContext
+
+pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 app = FastAPI()
 origins = [
@@ -16,6 +19,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 app.include_router(tasks.router)
+app.include_router(Users.router)
+app.include_router(auth.router)
 @app.get("/")
 async def root():
     # dict_of_todos = {"name": "first", "second": "second"}

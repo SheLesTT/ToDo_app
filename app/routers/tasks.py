@@ -26,7 +26,7 @@ async def get_post(id:int, db: Session = Depends(get_db)):
 @router.post("/", response_model=schemas.Task)
 async def create_post(post: schemas.TaskCreate, db: Session = Depends(get_db)):
 
-    new_task = Task(name=post.name, content=post.content, )
+    new_task = Task(name=post.name, content=post.content)
     db.add(new_task)
     db.commit()
     db.refresh(new_task)
