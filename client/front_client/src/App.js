@@ -1,6 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import Textfield from "./textfield";
 import Home from "./Home";
+import {UserProvider} from "./UserContext";
+import Register from "./Register";
+import Login from "./Login";
 // import './App.css'
 
 
@@ -20,10 +23,19 @@ function App() {
     }, []);
 
     return (
+
         <div className="content">
+
+            <UserProvider>
             <Home/>
+                 {/*<Register/> */}
+                <Login/>
 
+            </UserProvider>
 
+<div>
+
+</div>
 
         </div>
     );

@@ -1,21 +1,23 @@
-import {createContext} from "react";
+import {createContext, useEffect, useState} from "react";
 
 export const UserContext = createContext();
+
 
 export const UserProvider = (props) => {
     const [token, setToken] = useState(localStorage.getItem("userToken"));
 
-    useEfefect(() => {
+    useEffect(() => {
         const fetchUser = async () => {
             const requestOptions = {
-                method: "GET",
+                method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${token}`,
                 },
             }
 
-            const response = await fetch("http://127.0.0.1:8000/api/login", requestOptions);
+            const response = await fetch("http://127.0.0.1:8000/login", requestOptions);
+
 
             if (!response.ok){
                 setToken(null)
@@ -26,9 +28,11 @@ export const UserProvider = (props) => {
         }
         fetchUser();
     }, [token]);
+
+    return (<UserContext.Provider value ={[token, setToken]}>
+        {props.children}
+    </UserContext.Provider>)
 }
-return (<UserContext.Provider value ={[token, setToken]}>
-    {props.children}
-    </UserContext.Provider>
-)
+
+
 
