@@ -12,13 +12,13 @@ router = APIRouter(
 
 
 @router.post("/")
-def create_user(user_credentials: OAuth2PasswordRequestForm, db: Session = Depends(get_db)):
+def create_user(user_credentials: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(get_db)):
     user =    db.query(User).filter(User.email == user_credentials.username).first()
 
     if not user:
-        raise HTTPException(status_code=404, detail="invalid credentials")
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="invalid credentials")
     if not utils.verify_password(user_credentials.password, user.password):
-        raise HTTPException(status_code=404, detail="invalid credentials")
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="invalid credentials")
 
     access_toke = oauth2.create_access_token({"user_id": user.id})
     return {"access_token": access_toke, "token_type": "bearer"}
